@@ -1,4 +1,44 @@
-p{
-    font-size: smaller;
-    color: bisque;
+h1{
+    color: purple;
+    text-align: center;
+    color: olivedrab;
+    text-decoration: underline;
+
 }
+
+body{
+    background-color: mistyrose;
+    background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/1646E/production/_126464219_streetartptblueyellowface870.jpg.webp");
+}
+
+ul{
+    list-style: url("https://cdn10.bigcommerce.com/s-va8f1sa6s3/products/12450/images/31932/QB0020__83623.1634893539.60.90.jpg?c=2");
+
+}
+
+html{
+    font-family: Rockwell;
+}
+
+table{
+    color: white;
+}
+
+td{
+   font-size: x-large;
+    padding-bottom: inherit;
+    padding-top: initial;
+}
+
+tr{
+    font-size:x-large;
+    padding-left: inherit;
+    padding-right: inherit;
+}
+
+a{
+    background-color: white;
+}
+
+
+
