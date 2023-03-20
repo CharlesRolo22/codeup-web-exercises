@@ -2,6 +2,10 @@
     background-image: url("https://java.codeup.com/examples/bootstrap/pizza.png");
     height: 346px;
     background-size: cover;
+    background-position: 0 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .svg{
