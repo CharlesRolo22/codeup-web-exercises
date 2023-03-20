@@ -1,0 +1,18 @@
+/*@media screen and (max-width: 720px){*/
+
+
+/*    h4{*/
+/*        float: left;*/
+/*        font-size: xxx-large;*/
+/*        ;*/
+/*    }*/
+
+
+/*}*/
+
+h3{
+    color:blue;
+}
+.bi::before{
+    color:black;
+}

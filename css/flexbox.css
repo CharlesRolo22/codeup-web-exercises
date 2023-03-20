@@ -132,6 +132,9 @@ section:nth-of-type(6) {
     background: coral;
     height: 14em;
     /* enter needed declarations here */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
 
 }
 
@@ -144,6 +147,5 @@ section:nth-of-type(6) {
 .grey-box:nth-of-type(odd) {
     height: 4em;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
+
 }
