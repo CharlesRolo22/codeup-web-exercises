@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Dom Events Lecture</h1>
+<input id="input">
+<button id="btn1">Click Me!</button>
+<button id="btn2">Remove Event Listener</button>
+<h3>Login Form</h3>
+<form>
+    <label for="username">Username</label><br>
+    <input id="username" name="username"><br>
+    <label for="email">Email</label><br>
+    <input id="email" name="email"><br>
+    <label for="password">Password</label><br>
+    <input id="password" name="password" type="password"><br>
+    <button id="login-btn" type="submit">Login</button>
+
+</form>
+<script>
+document.getElementById("header").addEventListener("click", function (){
+    document.getElementById("header").style.color = "blue";
+});
+
+// let header = document.getElementById("header");
+// header.addEventListener("click", function(){
+//     console.log("single click event fired off")
+//     header.style.color = "blue";
+// });
+
+
+    header.addEventListener("dbclick", function (){
+        header.style.color = "black";
+    });
+
+    header.addEventListener("mouseout", function(){
+        header.innerHTML = "greetings Kotlin";
+    });
+
+
+    let loginBtn = document.getElementById("login-btn");
+    loginBtn.addEventListener("click", function(){
+        let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let password = document. getElementById("password").value;
+        console.log(username);
+        console.log(email);
+        console.log(password);
+
+    });
+</script>
+
+</body>
+</html>
