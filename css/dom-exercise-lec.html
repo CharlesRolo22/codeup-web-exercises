@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Dom Events Lecture</h1>
+<h1 id="header">Dom Events Lecture</h1>
 <input id="input">
 <button id="btn1">Click Me!</button>
 <button id="btn2">Remove Event Listener</button>
@@ -25,10 +25,11 @@
 </form>
 <script>
 document.getElementById("header").addEventListener("click", function (){
-    document.getElementById("header").style.color = "blue";
+    header.style.color = "blue";
 });
 
-// let header = document.getElementById("header");
+let header = document.getElementById("header");
+        console.log(header);
 // header.addEventListener("click", function(){
 //     console.log("single click event fired off")
 //     header.style.color = "blue";
