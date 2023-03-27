@@ -18,7 +18,11 @@
 
 // $('.codeup').css('border', '1px solid red')
 
-$('.codeup, p').css('font-size', '50px');
+// $('.codeup, p').css('font-size', '50px');
+//
+// let ingredients = $('#header').html();
+// alert(ingredients);
 
-let ingredients = $('#header').html();
-alert(ingredients);
+// $('#header').click(function() {
+//     alert('h1 with id "header" was clicked');
+// });
