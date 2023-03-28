@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10 FAQS</title>
+    <style>
+        .invisible {
+              visibility: hidden;
+        }
+        .highlighted{
+              background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<h1>National Park FAQs</h1>
+
+
+<p>10 FAQS</p>
+<div class="highlighted">
+<dl>
+  <dt>1. What is the most frequently visited National Park</dt>
+  <dd class="invisible">Grand Canyon National Park</dd>
+
+  <br>
+
+  <dt>2. What is Yellowstone Park Known for?</dt>
+  <dd class="invisible">Its Gysers</dd>
+
+  <br>
+
+  <dt>3. Is Mt. RushMore a national park?</dt>
+  <dd class="invisible">Yes</dd>
+
+  <br>
+
+  <dt>4. Are there any national parks in Louisiana?</dt>
+  <dd class="invisible">Yes, Cane River Creole National Park</dd>
+
+  <br>
+
+  <dt>5. Where can I apply for a Job?</dt>
+  <dd class="invisible">Go to usajobs.gov</dd>
+
+  <br>
+
+  <dt>6. Are National Parks privately funded?</dt>
+  <dd class="invisible">No, theyre funded by federal tax dollars</dd>
+
+  <br>
+
+  <dt>7. How many people work at the national park service?</dt>
+  <dd class="invisible">100,000 people total across all parks</dd>
+
+  <br>
+
+  <dt>8. Where is Mt Rushmore located?</dt>
+  <dd class="invisible">South Dakota</dd>
+
+  <br>
+
+  <dt>9. Do the Federal Government purchases property?</dt>
+  <dd class="invisible">Yes, new parks can be aquired land</dd>
+
+  <br>
+
+  <dt>10. Is the everglades a national park?</dt>
+  <dd class="invisible">No, its not a national park</dd>
+</dl>
+</div>
+</div>
+
+<button id="button">Toggle</button>
+  <script src="/js/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+          crossOrigin="anonymous"></script>
+
+<script>
+  "use strict"
+
+
+
+  $('button').click(function (){
+    $('dd').toggleClass('invisible')
+  });
+
+  $('dt').click(function(){
+    $(this).css('background', 'blue')
+  })
+
+
+
+
+</script>
+
+
+</body>
+</html>
