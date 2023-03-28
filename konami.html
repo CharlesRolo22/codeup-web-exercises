@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script src="/js/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script>
+  "use strict";
+
+  let konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+  let user = [];
+  let counter = 0;
+
+  $(document).keyup(function(event){
+    console.log(event.keyCode);
+    user.push(event.keyCode);
+
+    if(konami[counter] !== user[counter]){
+      alert("konami code not correct");
+    }
+    else if(konami[konami.length-1] === user[konami.length-1]){
+      alert("correct konami code - you get 30 lives!");
+    }
+    else{
+      counter++;
+    }
+  });
+</script>
+
+
+</body>
+</html>
