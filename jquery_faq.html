@@ -9,10 +9,13 @@
     <style>
         .invisible {
               visibility: hidden;
-        }
-        .highlighted{
-              background-color: greenyellow;
-        }
+        }html {
+           background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/aa/Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg");
+         }.highlighted {
+                             color: white;
+                           }
+
+
     </style>
 </head>
 <body>
@@ -63,37 +66,100 @@
   <br>
 
   <dt>9. Do the Federal Government purchases property?</dt>
-  <dd class="invisible">Yes, new parks can be aquired land</dd>
+  <dd class="invisible">Yes, new parks can be acquired land</dd>
 
   <br>
 
   <dt>10. Is the everglades a national park?</dt>
-  <dd class="invisible">No, its not a national park</dd>
+  <dd class="invisible">Yes, it is a national park</dd>
 </dl>
+
+  <button id="button">Toggle</button>
 </div>
+</div>
+<div id="info">
+<div>
+  <h3>
+    YellowStone National Park
+  </h3>
+      <ul id="Yellow">
+        <li>Great Attraction</li>
+        <li>Located in Idaho</li>
+        <li>Free Admission</li>
+        <li class="glow">Active Volcano</li>
+      </ul>
 </div>
 
-<button id="button">Toggle</button>
+<div>
+  <h3>
+    MT Rushmore National Park
+  </h3>
+  <ul id="Rushmore">
+    <li>Monument</li>
+    <li>4 presidents</li>
+    <li>South Dakota</li>
+    <li class="glow">Free Admission</li>
+  </ul>
+</div>
+
+<div>
+  <h3>
+    Grand Canyon National Park
+  </h3>
+  <ul id="Canyon">
+    <li>National Attraction</li>
+    <li>Free Admission</li>
+    <li>Located in 3 states</li>
+    <li class="glow">Open Daily</li>
+  </ul>
+</div>
+
+<button id="list">List Button</button>
+</div>
   <script src="/js/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
           crossOrigin="anonymous"></script>
+<script src="/js/jquery_faq.js"></script>
 
 <script>
   "use strict"
 
 
 
-  $('button').click(function (){
+  $('#button').click(function (){
     $('dd').toggleClass('invisible')
   });
 
   $('dt').click(function(){
     $(this).css('background', 'blue')
-  })
+  });
+
+ // $('li').each(function(index, element){
+ //   console.log(index);
+ //   console.log(element);
+ //   $(this).css('background', 'yellow')
+ // })
+
+  $('#list').click(function(){
+    $('ul').each(function(){
+      $(this).children().last().css('background-color', 'yellow')
+    })
+  });
+
+  $('li').click(function(){
+      $(this).parent().children().first().css('color', 'blue')
+  });
+  //
+  // console.log($('li').first().html());
+  // console.log($('li').last().html());
+
+  // li.css('font-weight', 'bold')
+  $('#Rushmore').children().css('font-weight', 'bold')
 
 
 
 
 </script>
+
 
 
 </body>
