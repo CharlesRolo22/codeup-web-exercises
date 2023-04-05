@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
+    <link href="css/weathermap.css" rel="stylesheet" />
+    <style>
+    #map {
+        /* the width and height may be set to any size */
+        width: 100%;
+        height: 400px;
+        margin-top: 30px;
+        border: 1px groove black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-xl bg-body-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather App</a>
+        </div>
+        <div class="city">
+            <a>Current City: Dallas</a>
+        </div>
+
+    </nav>
+</div>
+
+<div class="search">
+    <input type="text" placeholder="Search">
+</div>
+
+
+
+<div id="weather"></div>
+
+
+
+<div id='map'></div>
+
+
+
+
+
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="js/mapbox-geocoder.js"></script>
+
+
+<script>
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    let map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        zoom: 10, // starting zoom
+        center: [-96.8285, 33.0460] // [lng, lat]
+    });
+
+
+
+    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        APPID: OPEN_WEATHER_APPID,
+        q:     "Dallas, US",
+        units: "imperial",
+    }).done(function(data) {
+        console.log(data);
+        console.log(data.list);
+        for (let i = 0; i <= 40; i += 8) {
+            console.log(data.list[i]);
+            $('#weather').append(
+                "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt + "</p>" +
+                "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" +
+                "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+                data.list[i].main.humidity  + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+                 + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
+            )
+        }
+    })
+
+    let nextMarker =  new mapboxgl.Marker()
+    function newMarker (place) {
+        $('#weather').empty()
+        let location = place.lngLat
+        let nextCard = []
+        nextCard.push(location)
+        nextMarker.setLngLat(location).addTo(map);
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: OPEN_WEATHER_APPID,
+            lon: nextCard[0].lng,
+            lat: nextCard[0].lat,
+            units: "imperial",
+        }).done(function (data) {
+            console.log(data);
+            console.log(data.list);
+            for (let i = 0; i <= 40; i += 8) {
+                console.log(data.list[i]);
+                $('#weather').append(
+                    "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt + "</p>" +
+                    "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" +
+                    "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+                    data.list[i].main.humidity + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+                    + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
+                )
+            }
+        })
+
+    }
+
+    map.on("click", newMarker)
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</body>
+</html>
