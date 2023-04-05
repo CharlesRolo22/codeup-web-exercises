@@ -9,39 +9,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="css/weathermap.css" rel="stylesheet" />
     <style>
     #map {
         /* the width and height may be set to any size */
         width: 100%;
-        height: 400px;
+        height: 500px;
         margin-top: 30px;
         border: 1px groove black;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+
     }
     </style>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-expand-xl bg-body-primary">
+
+<div class="row">
+    <nav class="navbar navbar-expand-xl bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Weather App</a>
         </div>
         <div class="city">
-            <a>Current City: Dallas</a>
+            <a><i class="bi bi-cloud-lightning-rain-fill" style="font-size: 30px"></i></a>
         </div>
 
     </nav>
 </div>
 
 <div class="search">
-    <input type="text" placeholder="Search">
+    <div class="scrolling">
+    <marquee behavior="scroll" direction="left">Check Your Weather Enter Location Below!</marquee>
+    </div>
+
+    <input id="searchbar" type="text" placeholder="Enter a Location">
+        <button id="button" type="button" class="btn btn-info">Search</button>
 </div>
 
 
-
+<div id="space bg-info">
 <div id="weather"></div>
-
+</div>
 
 
 <div id='map'></div>
@@ -74,10 +82,11 @@
         console.log(data);
         console.log(data.list);
         for (let i = 0; i <= 40; i += 8) {
-            console.log(data.list[i]);
+            console.log(data.list);
             $('#weather').append(
-                "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt + "</p>" +
-                "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" +
+                "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt.substring(0, 10) + "</p>" +
+                "<p class='temp'>" + data.list[i].main.temp_min + "F" + " / " + data.list[i].main.temp_max + "F" + "</p>" + "<div class='icon'>" +
+                "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
                 "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
                 data.list[i].main.humidity  + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
                  + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
@@ -103,10 +112,11 @@
             for (let i = 0; i <= 40; i += 8) {
                 console.log(data.list[i]);
                 $('#weather').append(
-                    "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt + "</p>" +
-                    "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" +
+                    "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt.substring(0, 10) + "</p>" +
+                    "<p class='temp'>" + data.list[i].main.temp_min + "F" + " / " + data.list[i].main.temp_max + "F" + "</p>" + "<div class='icon'>" +
+                    "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
                     "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
-                    data.list[i].main.humidity + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+                    data.list[i].main.humidity  + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
                     + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
                 )
             }
@@ -114,7 +124,175 @@
 
     }
 
+
+
     map.on("click", newMarker)
+
+
+    function searchLocation() {
+        // console.log("event fired")
+        // let address = document.getElementById('searchbar').value;
+        // $.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json', {
+        //     access_token: MAPBOX_TOKEN,
+        // }).done(function(data) {
+        //     let longitude = data.center[0];
+        //     let latitude = data.center[1];
+        //
+        //     console.log(data)
+        //
+        //     map.setCenter([longitude, latitude]);
+        //     marker.setLngLat([longitude, latitude]);
+        //
+        //     $.get('https://api.openweathermap.org/data/2.5/forecast', {
+        //         APPID: OPEN_WEATHER_APPID,
+        //         lon: longitude,
+        //         lat: latitude,
+        //         units: "imperial",
+        //     }).done(function(data) {
+        //
+        //         $('#weather').empty()
+        //
+        //
+        //         for (let i = 0; i <= 40; i += 8) {
+        //             // console.log(data.list[i]);
+        //             $('#weather').append(
+        //                 "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt.substring(0, 10) + "</p>" +
+        //                 "<p class='temp'>" + data.list[i].main.temp_min + " / " + data.list[i].main.temp_max + "</p>" + "<div class='icon'>" +
+        //                 "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
+        //                 "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+        //                 data.list[i].main.humidity  + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+        //                 + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
+        //             )
+        //
+        //         }
+        //     })
+        // })
+    }
+
+
+    $("#button").click(function (){
+        console.log("event fired")
+        let address = document.getElementById('searchbar').value;
+        // $.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json', {
+        //     access_token: MAPBOX_TOKEN,
+        // }).done(function(data) {
+        //     console.log(data)
+        geocode(address, MAPBOX_TOKEN).then(function (res){
+            console.log(res)
+            console.log(res[0]);
+            console.log(res[1]);
+            let long = res[0];
+            let lat = res[1];
+            map.setCenter([long, lat]);
+            marker.setLngLat([long, lat]);
+        })
+
+
+
+            $.get('https://api.openweathermap.org/data/2.5/forecast', {
+                APPID: OPEN_WEATHER_APPID,
+                lon: long,
+                lat: lat,
+                units: "imperial",
+            }).done(function(data) {
+
+                $('#weather').empty()
+
+
+                for (let i = 0; i <= 40; i += 8) {
+                    // console.log(data.list[i]);
+                    $('#weather').append(
+                        "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt.substring(0, 10) + "</p>" +
+                        "<p class='temp'>" + data.list[i].main.temp_min + "F" + " / " + data.list[i].main.temp_max + "F" + "</p>" + "<div class='icon'>" +
+                        "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
+                        "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+                        data.list[i].main.humidity  + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+                        + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
+                    )
+
+                }
+            })
+        })
+
+
+// $('#button').click(function() {
+//
+//     let address = $("#searchbar").val()
+//     console.log(address);
+//
+//     })
+//
+//     geocode(address, mapboxgl.accessToken).then(function(data) {
+//         nextMarker.setLngLat([data[0], data[1]]).addTo(map);
+//         map.setCenter([data[0], data[1]]);
+//
+//         console.log(data);
+//
+//
+//     })
+//
+//         $.get("http://api.openweathermap.org/data/2.5/forecast", {
+//             APPID: OPEN_WEATHER_APPID,
+//             lon: data[0],
+//             lat: data[1],
+//             units: "imperial",
+//
+//         })
+//             .done(function (data) {
+//                     console.log(data);
+//                     console.log(data.list);
+//                     for (let i = 0; i <= data.list.length; i += 8) {
+//                         // console.log(data.list[i]);
+//                         $('#weather').append(
+//                             "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt.substring(0, 10) + "</p>" +
+//                             "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" + "<div class='icon'>" +
+//                             "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
+//                             "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+//                             data.list[i].main.humidity + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+//                             + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>")
+//
+//                     }
+//                 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let input = document.getElementById('searchbar').value
+        // input = input.LowerCase();
+        // $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        //     APPID: OPEN_WEATHER_APPID,
+        //     lon: nextCard[0].lng,
+        //     lat: nextCard[0].lat,
+        //     units: "imperial",
+        // }).done(function (data) {
+        //     console.log(data);
+        //     console.log(data.list);
+        //     for (let i = 0; i <= 40; i += 8) {
+        //         console.log(data.list[i]);
+        //         $('#weather').append(
+        //             "<div class='mastercard'><p class='day'>" + data.list[i].dt_txt + "</p>" +
+        //             "<p class='temp'>" + data.list[i].main.temp_min + "/" + data.list[i].main.temp_max + "</p>" + "<div class='icon'>" +
+        //             "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>" + "</div>" + '<hr>' +
+        //             "<p class='main'>" + "Description: " + data.list[i].weather[0].description + "</p>" + "<p class='humid'>" + "Humidity: " +
+        //             data.list[i].main.humidity + "</p>" + "<p class='wind'>" + "Wind: " + data.list[i].wind.speed + "</p>" + "<p class='pressure'>"
+        //             + "Pressure: " + data.list[i].main.pressure + "</p>" + "</div>"
+        //         )
+        //     }
+        // })
+
+
+
 
 
 

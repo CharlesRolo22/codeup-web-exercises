@@ -17,17 +17,27 @@ body {
 
 .navbar{
     width: 100%;
-    background: #3B94D9;
+    /*background: #3B94D9;*/
     margin-bottom: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 
 
+
+
 }
 
 .navbar-brand{
-    color: white;
+
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 
 .city{
     color: white;
@@ -39,6 +49,8 @@ body {
 .search{
     margin-left: 85px;
     margin-bottom: 15px;
+    text-align: center;
+
 }
 
 
@@ -56,7 +68,7 @@ body {
     clear: both;
     border-style: groove;
     border-radius: 15px;
-    background-size: 220%;
+    background-size: 300%;
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbCeieclh95IEf7BowxwktOXxkIRdd6LZf0g&usqp=CAU");
 
 
@@ -73,6 +85,27 @@ body {
     text-align: center;
     border-bottom: 1px dotted gray;
 }
+
+.bi {
+    margin-right: 70px;
+    height: 10px;
+    width: 10px;
+}
+
+.btn{
+    color: white;
+}
+
+.icon{
+    text-align: center;
+}
+
+.scrolling{
+    font-size: 2rem;
+
+}
+
+
 
 
 /* Responsive columns - one column layout (vertical) on small screens */
