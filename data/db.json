@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "The Weather Man",
+      "author": "Chief Keef",
+      "id": 3
+    },
+    {
+      "title": null,
+      "author": "",
+      "id": 4
+    },
+    {
+      "title": null,
+      "author": null,
+      "id": 5
+    }
+  ]
+}
