@@ -1,14 +1,18 @@
 h1{
-    color: purple;
     text-align: center;
-    color: olivedrab;
+    color: navy;
     text-decoration: underline;
 
 }
 
-body{
+body {
     background-color: mistyrose;
     background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/1646E/production/_126464219_streetartptblueyellowface870.jpg.webp");
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+
+
 }
 
 ul{
@@ -39,6 +43,17 @@ tr{
 a{
     background-color: white;
 }
+
+li{
+    color: white;
+    font-weight: bold;
+}
+
+h2{
+    color: navy;
+}
+
+
 
 
 

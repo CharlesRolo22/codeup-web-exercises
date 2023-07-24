@@ -6,13 +6,13 @@ fetch("http://localhost:3000/posts")
     .catch (error => console.error(error));
 
 
-function createPost(title, author){
-    title = prompt("What is your favorite title?")
-    author = prompt("Who is the author?")
-    return {title, author};
-}
-
-console.log(createPost())
+// function createPost(title, author){
+//     title = prompt("What is your favorite title?")
+//     author = prompt("Who is the author?")
+//     return {title, author};
+// }
+//
+// console.log(createPost())
 
 fetch("http://localhost:3000/posts", {
     method: 'POST',

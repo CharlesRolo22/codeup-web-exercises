@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies App</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+    }
+
+    label {
+      margin-bottom: 0.5em;
+    }
+
+    input, select {
+      padding: 0.5em;
+      margin-bottom: 1em;
+      border-radius: 0.3em;
+      border: none;
+      box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 0.5em;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    td:last-child {
+      text-align: center;
+    }
+
+    button {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 0.5em;
+      border-radius: 0.3em;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Movies App</h1>
+
+<!-- Form for adding/editing movies -->
+<form id="movie-form">
+  <input type="hidden" id="movie-id">
+  <label for="movie-title">Title:</label>
+  <input type="text" id="movie-title" required>
+  <label for="movie-rating">Rating:</label>
+  <select id="movie-rating" required>
+    <option value="">-- Select a rating --</option>
+    <option value="1">1 star</option>
+    <option value="2">2 stars</option>
+    <option value="3">3 stars</option>
+    <option value="4">4 stars</option>
+    <option value="5">5 stars</option>
+  </select>
+  <input type="submit" value="Save">
+</form>
+
+<!-- Table for displaying movies -->
+<table id="movies-table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  // Fetch all movies when the page loads
+  fetchMovies();
+
+  // Add an event listener to the movie form
+  document.getElementById('movie-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var movieId = document.getElementById('movie-id').value;
+    var movieTitle = document.getElementById('movie-title').value;
+    var movieRating = document.getElementById('movie-rating').value;
+    if (movieId) {
+      // Edit an existing movie
+      fetch('/movies/' + movieId, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: movieTitle,
+          rating: movieRating
+        })
+      })
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(data) {
+                clearForm
